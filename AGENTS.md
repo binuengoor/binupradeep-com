@@ -84,6 +84,12 @@ Prompting frameworks and reusable templates.
 ### G. Blog (`src/content/docs/blog/<slug>.md`)
 Categories are **tags**: `northstar` (reflections, quotes), `shortstory` (fiction), `travel` (travelogues). Put `<!-- excerpt -->` after the opening paragraph. Header image: `![Header](images/YYYY/<slug>/header.webp)`. The two travelogues `tour-de-west` and `tour-de-maine` are different trips (Maine is the sequel), not duplicates.
 
+### H. Travelogue feature pages (`/travel/<slug>/`)
+Tour de West, Tour de Maine and Idiots in Town (Hyderabad) share one template: `src/pages/travel/[trip].astro` + `src/styles/travelogue.css` (scoped under `.tg`). Eurotrip 2024 keeps its own hand-built "Binario" page.
+- Add or edit a trip in `src/travel/trips.ts` (title, kicker, accent, stats). The story is `src/travel/<slug>/story.md` (plain markdown; `##` headings become the chapter nav; an italic line right after an image is its caption). Photos live in `src/assets/travel/<slug>/` (WebP, GPS stripped) and `hero.webp` is the top image.
+- The blog entry (`src/content/docs/blog/<post>.md`) is only a teaser: front matter with a `cover`, the intro up to `<!-- excerpt -->`, and a link to the feature page. Do not put the full story in it.
+- Each trip needs `public/travel/<slug>/og.jpg` (1200x630 crop of the hero) for link previews; `Site.astro` takes `image` / `imageAlt`.
+
 ---
 
 ## 4. Design System (one theme for the whole site)
