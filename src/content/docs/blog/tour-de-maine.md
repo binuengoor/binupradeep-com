@@ -171,6 +171,10 @@ It was pretty cold outside. It was interesting to see a large number of Indian t
 
 We started the car and drove to the Sand Beach along the Park Loop Road. On the way, we stopped at a couple of overlooks and admired the view of the ocean and the several small islands of Acadia. From afar these islands look like little pebbles in a pond. Acadia is a gorgeous national park
 
+![A Park Loop Road overlook with an information sign and islands on the water](images/2017/tourdemaine/Day1/06a.webp)
+
+*One of the overlooks on the Park Loop Road, islands like pebbles in a pond.*
+
 When we finally arrived at Sand Beach, we realized that we were a bit too late to reach there. The parking lots were full, and there were cars parked on the sides of the road also. The road leading to the Sand Beach was a one-way drive. We didn’t want to leave the parking lots to find parking because if we can't find parking close by, we can't just come back to the lot since the road is one-way. We waited for a while to see if anyone was going to come and get their cars. After 15 minutes of driving inside that little parking lot, we realized that there was another parking stretch right outside that parking lot and we managed to find a spot quickly. We packed the essentials(water and snacks) quickly and set out for the famous Beehive Trail.
 
 ### Beehive Trail
@@ -182,6 +186,10 @@ I could feel that the Shambhus weren't particularly enthusiastic about the hikin
 Both the Shambhus was taunting me saying that I was going to make them walk a lot today and it will be slow and tedious. Beehive trail, however, is not the everyday-hike. I am glad I didn't disclose much about the trail to them. That way, every bit of this hiking experience will come across as a surprise. Moreover, I can adjust the rest of the tour plan based on how well they like this hike.
 
 Beehive trail soon showed its might. What seemed like a  leisurely walk in woods soon became that of hopping small rocks and then bigger boulders. Pretty soon we were rock-scrambling and then holding-on-to-dear-life on one of the iron bars attached to the rocks.
+
+![Two friends scrambling on a rock face on the Beehive Trail](images/2017/tourdemaine/Day1/07a.webp)
+
+*Beehive: this is the part where the trail turns into a ladder.*
 
 We came across a few trail markers. Trail Markers, as the name suggests are markings that help you make sure that you are staying on the designated trails. Across the US, I have seen two main types of trail markers.
 
@@ -227,6 +235,10 @@ Later we headed back to Bar Harbor to check into the hotel. The check-in process
 By the time we freshened up, it was 9 pm. I soon realized that most of the restaurants in the Bar Harbor area close by 9 PM on Saturdays. I thought there might be exceptions on long weekends as its peak season. Not the case here.
 
 We finally found Finback Restaurant which seemed to have a casual, laid-back environment. It looks 20 minutes for them to get us seated. We ordered some beers, lobster bisque, lobster Mac and Cheese and their Seafood Platter. The waitress stopped by and let us know that we would have live music that night. Good vibes kicked in when the music was on. The food was underwhelming. The beer I chose was also quite terrible.
+
+![A candle and a beer on a wooden restaurant table](images/2017/tourdemaine/Day1/13a.webp)
+
+*Finback: candlelight, live music, one beer I'd rather forget.*
 
 We went back to the hotel and then straight to bed.
 
@@ -284,6 +296,10 @@ We took a lot of pictures along the trail. Deer Brooke bridge is a majestic brid
 ![](images/2017/tourdemaine/Day2/21.webp)
 The Jordan Pond trail gives the hiker mind-numbing scenic views. Wooden planks are neatly aligned throughout the trail which makes it a family-friendly hike as opposed to all the other hikes we did so far.
 
+![A stone arch bridge in the woods](images/2017/tourdemaine/Day2/20a.webp)
+
+*Deer Brook Bridge on the carriage road.*
+
 We were extremely hungry and thirsty by then. We had exhausted all the water we carried and had most of the good snacks we had with us. But hey, Jordan Pond Restaurant is right beside where we parked our cars, and apparently, they are the highest-rated restaurant in the area. Their Pop Overs and Strawberry jam combination are world-famous, and they have been serving those at this restaurant for over 100 years. I can’t wait to be there and have a sumptuous and well-deserved lunch.
 
 We soon reached the Jordan Pond Restaurant to see it super crowded. I had very little hope, still enquired at the reservation about the wait time. They informed me that there would be at less an hour wait before we would get seated. We decided not to wait.
@@ -295,6 +311,10 @@ I pulled out Yelp and found that there is another restaurant 3 miles from Jordan
 We soon reached Lighthouse Inn to find that lighthouse is just a name, they just had a 2 feet tall replica lighthouse model in front of the restaurant, and that is what we get. But on the positive side, the waitress was great! She had a very positive air around her and gave us some great suggestions.
 ![](images/2017/tourdemaine/Day2/22.webp)
 We got fried calamari and crab cakes(really awesome) for appetizers. I got a loser roll, Sarath Shambhu got a Tuna Melt Sandwich, Shambhu Annan got a crab sandwich.
+
+![A lobster roll with chips and a pickle](images/2017/tourdemaine/Day2/22a.webp)
+
+*The lobster roll at the Lighthouse Inn. The lighthouse is a two-foot replica.*
 
 Meanwhile, Sarath Shambhu and I got into a debate over the need to pronounce things right and about the need to follow the norms and etiquettes of other countries while we are living/traveling in them. It was a healthy conversation and its always good to hear/see the perspectives of other people. I feel that humans learn from other humans better and faster than we learn from books or other mediums. Whatever. Moving along.
 
@@ -353,6 +373,10 @@ Finally, near a stone, he located what he thought was his bud. Checked the brand
 
 My lens, all packed and sitting there waiting for us.
 
+![A camera lens lying in the back of a car](images/2017/tourdemaine/Day2/25b.webp)
+
+*The prodigal lens, back in the car.*
+
 I have done several treasure hunts as a kid. This was surely the weirdest one!
 
 The prodigal son (lens) has finally come home. Moreover, this was the lens I needed for astrophotography. We took it back to the car, set up the tripod, aimed the camera at the stars and turned on the camera. It wouldn’t turn on! I checked the buttons on the camera. Checked everything. It wouldn’t turn on! What's wrong now?!
@@ -360,7 +384,6 @@ The prodigal son (lens) has finally come home. Moreover, this was the lens I nee
 I then checked the battery compartment to find that there was no battery in it. So what? I carry at least four batteries with me all the time. I looked in the camera bag: none were there! Sarath in a rush got the camera and forgot to get the batteries that were lying next to it in the room. And that's a wrap!
 
 We stood there for another 10-15 minutes, just gazing at the pure wonder above us. I felt so little. Remembered one of my famous comic strip from Calvin and the Hobbes series.
-![](images/2017/tourdemaine/Day2/25b.webp)
 We then got in the car and came back home: to feast on the lobsters.
 
 Since none of us had any prior experience of cracking open the lobster shell, we watched a couple of youtube videos for guidance. Even still, we had a tough time cracking open the shells. After what felt like an hour and a half, the carcass of the lobster laid there shattered into gazillion pieces. It looked like an epic war scene.
@@ -398,6 +421,10 @@ Schooner overlook has a short trail to the shore where you have to scramble down
 ![](images/2017/tourdemaine/Day3/26.webp)
 Tide pools are small pools that form in the crevices or depressions in the rocks close to the shore. During high tide, a variety of wildlife ranging from Starfishes to mussels get washed into these pools, and during low tide, these pools get exposed. It is always best to be viewed a little after the low(-est) tide time. 8:20 AM was the predicted low tide time according to an online weather website. Sure enough, I could see many of such pools. It was extremely difficult to get to the pools as all the rocks near the shore were covered with algae making it slippery to walk. I managed to get to one and called others to walk over.
 
+![A small tide pool between rocks](images/2017/tourdemaine/Day3/26a.webp)
+
+*A tide pool at Schooner Head. Green rocks are the slippery ones.*
+
 “Don’t walk over the green stuff, it's slippery. I said the green stuff is slippery!”
 
 I could hear Sarath hollering to Shambhu Annan. I turned around to see what looked like Shambhu Annan doing a combination of a reverse moonwalk and tribal war dance over the rocks!
@@ -422,6 +449,10 @@ As we approached the Jordan Pond, we found that there was very little crowd toda
 And of course, we got seated right away. We got seated at a window-side table with a spectacular view of the North and South Bubbles. We ordered Chai and Popovers. The Chai was good with some cinnamon seasoned over it. Soon the Pop Overs arrived. If I said yesterday that it was just bread and jam, think about it as the story of the fox who couldn’t jump up and reach the grapes who declared them as bitter. The popovers were tender, yet crispy and delicious. The jam, well. I don’t like strawberry flavor that much, but this jam was one of the best I’ve ever had! Phenomenal!
 ![](images/2017/tourdemaine/Day3/28.webp)
 Mind and Belly full, we headed to the adjacent souvenir shops. Shambhu Annan got a shot glass; I got a magnet and a small sculpture of a deer sitting over a wine cork. Cool!
+
+![A cup of chai on a table with a window view of hills](images/2017/tourdemaine/Day3/28a.webp)
+
+*Chai at Jordan Pond with the Bubbles in the window.*
 
 We soon got back on the road realizing that we are running out of time. We better start for Pennsylvania now, or we’ll be reaching home super late at night. We all got to go to work tomorrow.
 
