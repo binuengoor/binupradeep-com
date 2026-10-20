@@ -11,7 +11,7 @@ export function photo(name: string): ImageMetadata {
 
 // Pre-encoded silent loops in public/travel/eurotrip-2024/clips/ (width, height).
 export const CLIPS: Record<string, [number, number]> = {
-  alps: [720, 406], 'brienz-boat': [406, 720], brunch: [720, 630], cyclists: [406, 720],
+  alps: [720, 406], 'cliff-walk': [406, 720], 'brienz-boat': [406, 720], brunch: [720, 630], cyclists: [406, 720],
   ebike: [406, 720], 'keyhole-door': [406, 720], 'piz-gloria': [720, 630], trottibike: [720, 406],
 };
 

@@ -213,7 +213,7 @@ main.binario { max-width:none; margin:0; padding:0; }
 .b-keyhole .kh { width:min(330px, 70vw); margin:0 auto; aspect-ratio:100/150; filter:drop-shadow(0 0 40px rgba(255,214,150,.18));
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150'%3E%3Ccircle cx='50' cy='44' r='34'/%3E%3Cpolygon points='34,66 66,66 80,148 20,148'/%3E%3C/svg%3E") center/contain no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150'%3E%3Ccircle cx='50' cy='44' r='34'/%3E%3Cpolygon points='34,66 66,66 80,148 20,148'/%3E%3C/svg%3E") center/contain no-repeat; }
-.b-keyhole .kh img { width:100%; height:100%; object-fit:cover; object-position:50% 4%; }
+.b-keyhole .kh img { width:100%; height:100%; object-fit:cover; object-position:50% 0; }
 .b-keyhole p { max-width:36rem; margin:var(--space-6) auto 0; color:var(--trip-night-ink); opacity:.9; }
 .b-keyhole .credit { font-size:var(--text-xs); opacity:.65; margin-top:var(--space-4); }
 
