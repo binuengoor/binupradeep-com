@@ -1,0 +1,15 @@
+---
+// A plain photo: a card in the text column, wide, full-bleed, or floated beside the text.
+import Pic from './Pic.astro';
+import { timeOf } from './media';
+
+interface Props { name: string; alt: string; variant?: 'card' | 'wide' | 'bleed'; float?: 'l' | 'r'; width?: string; label?: string; chip?: string; caption?: string }
+const { name, alt, variant = 'card', float, width, label, chip, caption } = Astro.props;
+const sizes = variant === 'bleed' ? '100vw' : variant === 'wide' ? '(min-width: 1140px) 1100px, 94vw' : float ? '(min-width: 700px) 340px, 92vw' : '(min-width: 700px) 640px, 92vw';
+const tag = label ?? timeOf(name);
+---
+<figure class:list={['b-photo', 'b-zoom', variant === 'wide' && 'b-wide', variant === 'bleed' && 'b-full b-bleed', float && `b-float-${float}`]} style={width ? `width:${width}` : undefined}>
+  <Pic name={name} alt={alt} sizes={sizes} />
+  {chip && <span class="b-chip">{chip}</span>}
+  {caption && <figcaption>{tag && <span class="mono">{tag}</span>}{caption}</figcaption>}
+</figure>

@@ -1,0 +1,14 @@
+---
+// A handwritten margin note (beside the text on wide screens, inline on phones).
+interface Props { icon: 'heart' | 'leaf' | 'home'; label: string }
+const { icon, label } = Astro.props;
+const paths = {
+  heart: 'M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z',
+  leaf: 'M12 22V9M12 9c-3-4-7-4-9-2 3 0 6 1 9 2zm0 0c3-4 7-4 9-2-3 0-6 1-9 2zm0 0c-1-4-4-6-7-6 2 2 4 3 7 6zm0 0c1-4 4-6 7-6-2 2-4 3-7 6z',
+  home: 'M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6',
+};
+---
+<aside class="b-note">
+  <span class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d={paths[icon]} /></svg>{label}</span>
+  <slot />
+</aside>

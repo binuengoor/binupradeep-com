@@ -1,0 +1,16 @@
+---
+// A day header styled as a train ticket.
+interface Props { day: number; route: string; short: string; title: string; when: string; stamp: [string, string]; variant?: 'alps' | 'rain' }
+const { day, route, short, title, when, stamp, variant } = Astro.props;
+const n = String(day).padStart(2, '0');
+---
+<header class:list={['b-ticket', variant === 'alps' && 'is-alps', variant === 'rain' && 'is-alps is-rain']} id={`day-${day}`} data-day={`d${day}`}>
+  <div class="stub"><span class="mono">Day</span><span class="n">{n}</span></div>
+  <div class="main">
+    <span class="barcode" aria-hidden="true"></span>
+    <span class="mono route"><span class="r-long">{route}</span><span class="r-short">{short}</span></span>
+    <h2>{title}</h2>
+    <p class="when">{when}</p>
+    <span class="stamp" aria-hidden="true"><span><b>{stamp[0]}</b>{stamp[1]}</span></span>
+  </div>
+</header>

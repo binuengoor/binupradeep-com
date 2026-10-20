@@ -1,0 +1,8 @@
+---
+// A short conversation as chat bubbles (Malayalam with the English underneath).
+interface Props { lines: { who: string; ml: string; en: string; me?: boolean }[] }
+const { lines } = Astro.props;
+---
+<div class="b-dialogue" role="group" aria-label="The conversation in the shop">
+  {lines.map((l) => <p class:list={['line', l.me && 'me']}><span class="who">{l.who}</span><span class="ml" lang="ml-Latn">{l.ml}</span><span class="en">{l.en}</span></p>)}
+</div>

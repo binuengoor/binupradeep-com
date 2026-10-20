@@ -1,0 +1,11 @@
+---
+// A portrait clip in a phone frame, floated beside the text.
+import Clip from './Clip.astro';
+
+interface Props { clip: string; alt: string; float?: 'l' | 'r'; caption?: string }
+const { clip, alt, float = 'l', caption } = Astro.props;
+---
+<figure class:list={['b-phone-fig', `b-float-${float}`]}>
+  <div class="b-phone"><Clip name={clip} alt={alt} /></div>
+  {caption && <figcaption class="hand">{caption}</figcaption>}
+</figure>

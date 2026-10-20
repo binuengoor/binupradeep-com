@@ -1,0 +1,6 @@
+---
+// One stretch of the story. The page colours follow whichever chapter is in the middle of the screen.
+interface Props { name: 'rome' | 'florence' | 'alps' | 'milan'; top?: boolean }
+const { name, top = false } = Astro.props;
+---
+<section class:list={['b-chapter', 'b-story', { 'b-top': top }]} data-chapter={name}><slot /></section>

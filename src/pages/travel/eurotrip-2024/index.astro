@@ -1,0 +1,162 @@
+---
+// Eurotrip 2024 feature page ("Binario"). Story text: src/travel/eurotrip-2024/story.mdx. Styles: src/styles/binario.css.
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource-variable/caveat';
+import '../../../styles/binario.css';
+import Site from '../../../layouts/Site.astro';
+import Hero from '../../../components/binario/Hero.astro';
+import Nav from '../../../components/binario/Nav.astro';
+import Gallery from '../../../components/binario/Gallery.astro';
+import Story from '../../../travel/eurotrip-2024/story.mdx';
+
+const title = 'Rome Looked Like a Movie and Felt Like Home · Eurotrip 2024';
+const description = 'Eleven days in Italy and Switzerland by train: Rome, the Vatican, Florence, a very late train, the Swiss Alps and Milan. A travelogue by Binu Pradeep.';
+---
+<Site title={title} description={description} path="/travel/eurotrip-2024/">
+  <main class="binario" data-chapter="rome">
+    <Hero />
+    <Nav />
+    <article>
+      <Story />
+    </article>
+    <Gallery />
+  </main>
+</Site>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.binario')!;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Page colours follow whichever chapter is in the middle of the screen.
+  const chapterIO = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) root.dataset.chapter = (e.target as HTMLElement).dataset.chapter; });
+  }, { rootMargin: '-48% 0px -48% 0px' });
+  root.querySelectorAll<HTMLElement>('section[data-chapter]').forEach((s) => chapterIO.observe(s));
+
+  // Split-flap letters: spin through the alphabet, then settle (clock-based, so throttled tabs still settle).
+  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  function flapInto(el: HTMLElement, text: string, delay: number) {
+    el.textContent = '';
+    text.split('').forEach((c, i) => {
+      const s = document.createElement('span'); s.className = 'flap'; s.textContent = c; el.appendChild(s);
+      if (reduce || c === ' ') return;
+      const start = performance.now() + delay, end = start + 380 + i * 90;
+      const tick = () => {
+        const now = performance.now();
+        if (now >= end) { s.textContent = c; return; }
+        if (now >= start) s.textContent = CH[(Math.random() * CH.length) | 0];
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
+  }
+  root.querySelectorAll<HTMLElement>('.b-hero .flapword').forEach((w, i) => flapInto(w, w.dataset.word || '', 400 + i * 260));
+
+  // Departure boards flip in when they scroll into view.
+  root.querySelectorAll<HTMLElement>('.b-board').forEach((board) => {
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      board.querySelectorAll<HTMLElement>('[data-flap]').forEach((td, i) => {
+        const text = td.textContent || ''; td.textContent = '';
+        const w = document.createElement('span'); w.className = 'flapword'; td.appendChild(w);
+        flapInto(w, text.trim(), i * 90);
+      });
+    }, { threshold: 0.4 });
+    io.observe(board);
+  });
+
+  // Spine and phone day tracker.
+  const spine = root.querySelector<HTMLElement>('.b-spine')!;
+  const spineItems = spine.querySelectorAll<HTMLElement>('li[data-for]');
+  const pill = root.querySelector<HTMLElement>('.b-daypill')!;
+  const pillDay = pill.querySelector<HTMLElement>('#b-dpday')!;
+  const pillBtn = pill.querySelector('button')!, pillList = pill.querySelector('ol')!;
+  const DAYS: Record<string, string> = JSON.parse(pill.dataset.days || '{}');
+  let current = '';
+  const dayIO = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const d = (e.target as HTMLElement).dataset.day || '';
+      spineItems.forEach((li) => li.classList.toggle('on', li.dataset.for === d));
+      if (d !== current && DAYS[d]) { current = d; flapInto(pillDay, DAYS[d], 0); }
+    });
+  }, { rootMargin: '0px 0px -60% 0px' });
+  root.querySelectorAll('.b-ticket[data-day]').forEach((t) => dayIO.observe(t));
+  const hero = root.querySelector<HTMLElement>('.b-hero')!, gallery = root.querySelector<HTMLElement>('#gallery');
+  const onScroll = () => {
+    const past = scrollY > hero.offsetHeight * 0.8;
+    const atEnd = gallery ? gallery.getBoundingClientRect().top < innerHeight * 0.5 : false;
+    spine.classList.toggle('show', past && !atEnd);
+    pill.classList.toggle('show', past);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  pillBtn.addEventListener('click', () => { const open = pillList.hidden; pillList.hidden = !open; pillBtn.setAttribute('aria-expanded', String(open)); });
+  pillList.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) { pillList.hidden = true; pillBtn.setAttribute('aria-expanded', 'false'); } });
+
+  // Clips play silently while on screen; with reduced motion they get controls instead.
+  root.querySelectorAll<HTMLVideoElement>('video.b-clip').forEach((v) => {
+    if (reduce) { v.controls = true; v.preload = 'metadata'; return; }
+    new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => { v.controls = true; }); } else v.pause();
+    }), { threshold: 0.35 }).observe(v);
+  });
+
+  // Polaroids develop like instant film; stamps thunk onto their cards.
+  if (!reduce) {
+    const devIO = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      setTimeout(() => e.target.classList.remove('undeveloped'), 250); devIO.unobserve(e.target);
+    }), { threshold: 0.45 });
+    root.querySelectorAll('.b-polaroid, .b-spec').forEach((el) => { el.classList.add('undeveloped'); devIO.observe(el); });
+    const stampIO = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('unstamped'); e.target.classList.add('stamped'); stampIO.unobserve(e.target);
+    }), { threshold: 0.9 });
+    root.querySelectorAll('.b-pstamp, .b-ticket .stamp, .b-postmark').forEach((el) => { el.classList.add('unstamped'); stampIO.observe(el); });
+  }
+
+  // Gallery day filter.
+  const tabs = root.querySelectorAll<HTMLButtonElement>('.b-gallery .tabs button');
+  tabs.forEach((b) => b.addEventListener('click', () => {
+    tabs.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    root.querySelectorAll<HTMLElement>('.b-gallery figure').forEach((f) => { f.hidden = b.dataset.day !== 'all' && f.dataset.day !== b.dataset.day; });
+  }));
+
+  // Photo viewer: click or Enter on a photo; arrows browse; Esc closes; focus returns to the photo.
+  const lb = root.querySelector<HTMLElement>('.b-lb')!, lbImg = lb.querySelector('img')!, lbCap = lb.querySelector('.cap')!;
+  const shots = Array.from(root.querySelectorAll<HTMLImageElement>('.b-zoom img'));
+  let cur = 0, lastFocus: HTMLElement | null = null;
+  const visible = () => shots.filter((img) => !img.closest('[hidden]'));
+  function show(i: number) {
+    const list = visible(); cur = (i + list.length) % list.length;
+    const img = list[cur];
+    lbImg.src = img.dataset.full || img.currentSrc; lbImg.alt = img.alt;
+    const holder = img.closest('figure, li');
+    const cap = holder?.querySelector('figcaption, .l');
+    const parts = cap ? Array.from(cap.childNodes).map((n) => (n.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean) : [];
+    lbCap.textContent = parts.length ? parts.join(' · ') : img.alt;
+  }
+  function openLb(img: HTMLImageElement) { lastFocus = img; show(visible().indexOf(img)); lb.classList.add('open'); lb.querySelector<HTMLElement>('.close')!.focus(); }
+  function closeLb() { lb.classList.remove('open'); lastFocus?.focus(); }
+  shots.forEach((img) => {
+    img.tabIndex = 0; img.setAttribute('role', 'button'); img.setAttribute('aria-label', 'Enlarge photo: ' + img.alt);
+    img.addEventListener('click', () => openLb(img));
+    img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(img); } });
+  });
+  lb.querySelector('.close')!.addEventListener('click', closeLb);
+  lb.querySelector('.prev')!.addEventListener('click', (e) => { e.stopPropagation(); show(cur - 1); });
+  lb.querySelector('.next')!.addEventListener('click', (e) => { e.stopPropagation(); show(cur + 1); });
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowRight') show(cur + 1);
+    else if (e.key === 'ArrowLeft') show(cur - 1);
+    else if (e.key === 'Tab') {
+      const f = lb.querySelectorAll<HTMLElement>('button'), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+</script>

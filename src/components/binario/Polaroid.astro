@@ -1,0 +1,14 @@
+---
+// An instant-film print taped to the page. Holds a photo or a looping clip; it "develops" as it scrolls in.
+import Pic from './Pic.astro';
+import Clip from './Clip.astro';
+
+interface Props { name?: string; clip?: string; alt: string; caption: string; tilt?: number; ar?: string; width?: string; float?: 'l' | 'r'; over?: string }
+const { name, clip, alt, caption, tilt = -2.5, ar, width, float, over } = Astro.props;
+const style = [`--tilt:${tilt}deg`, ar && `--ar:${ar}`, width && `width:${width}`].filter(Boolean).join(';');
+---
+<figure class:list={['b-polaroid', name && 'b-zoom', float ? `b-float-${float}` : 'b-center']} style={style}>
+  {name ? <Pic name={name} alt={alt} sizes="(min-width: 700px) 340px, 80vw" /> : <Clip name={clip!} alt={alt} />}
+  {over && <span class="b-note-over" aria-hidden="true">{over}</span>}
+  <figcaption>{caption}</figcaption>
+</figure>

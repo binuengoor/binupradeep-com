@@ -67,3 +67,41 @@
   --rule:var(--bw-thick) solid var(--fg);        /* header / footer / band rules */
   --hairline:var(--bw-thin) solid var(--line);
 }
+
+/* ---- Feature edition: Eurotrip 2024 "Binario" (/travel/eurotrip-2024/ only; mapped in binario.css) ----
+   One palette per chapter: Rome (travertine, terracotta, ochre), Florence (Duomo marble), Alps (snow, glacier teal, SBB red),
+   Milan (Duomo white, Galleria gold). Text colours pass WCAG AA on their paper (ochre: large text only). See /design-system/. */
+:root, :root[data-theme='dark'] {
+  --trip-rome-paper:#1a1310; --trip-rome-paper2:#241a15; --trip-rome-ink:#f1e6d8; --trip-rome-muted:#c2ab96;
+  --trip-rome-accent:#e57d5b; --trip-rome-accent2:#e2b057; --trip-rome-line:#3b2c23; --trip-rome-card:#271c17;
+  --trip-florence-paper:#121514; --trip-florence-paper2:#1a1f1d; --trip-florence-ink:#ece9e3; --trip-florence-muted:#b3b7b2;
+  --trip-florence-accent:#7cc29e; --trip-florence-accent2:#e58ea4; --trip-florence-line:#2a312e; --trip-florence-card:#1c2220;
+  --trip-alps-paper:#0e191e; --trip-alps-paper2:#132329; --trip-alps-ink:#e4eef0; --trip-alps-muted:#9db5bc;
+  --trip-alps-accent:#5ec8c2; --trip-alps-accent2:#f0594c; --trip-alps-line:#24373e; --trip-alps-card:#16272d;
+  --trip-milan-paper:#151412; --trip-milan-paper2:#1e1c19; --trip-milan-ink:#eeeae2; --trip-milan-muted:#b7b0a2;
+  --trip-milan-accent:#ddb86c; --trip-milan-accent2:#e8706a; --trip-milan-line:#33302a; --trip-milan-card:#201e1a;
+  --trip-topo-stroke:rgba(140,210,205,.10);
+}
+:root[data-theme='light'] {
+  --trip-rome-paper:#f5ede1; --trip-rome-paper2:#efe3d2; --trip-rome-ink:#2a1f19; --trip-rome-muted:#6e5a4c;
+  --trip-rome-accent:#ae4d29; --trip-rome-accent2:#ae7a26; --trip-rome-line:#dccab4; --trip-rome-card:#fffbf4;
+  --trip-florence-paper:#f6f3ee; --trip-florence-paper2:#ece6dc; --trip-florence-ink:#23262a; --trip-florence-muted:#5d6168;
+  --trip-florence-accent:#2f6b50; --trip-florence-accent2:#a84a61; --trip-florence-line:#d9d2c5; --trip-florence-card:#ffffff;
+  --trip-alps-paper:#eff5f4; --trip-alps-paper2:#e2ecea; --trip-alps-ink:#13232a; --trip-alps-muted:#4c6470;
+  --trip-alps-accent:#187a78; --trip-alps-accent2:#d52b1e; --trip-alps-line:#c6d7d6; --trip-alps-card:#ffffff;
+  --trip-milan-paper:#f4f1ea; --trip-milan-paper2:#e9e3d6; --trip-milan-ink:#1e1d1b; --trip-milan-muted:#5f5a52;
+  --trip-milan-accent:#8a6526; --trip-milan-accent2:#a92c25; --trip-milan-line:#d6cdbb; --trip-milan-card:#fffdf8;
+  --trip-topo-stroke:rgba(30,90,96,.16);
+}
+:root {
+  /* Theme-independent props: departure board, instant film, chalkboard, tape, keyhole night, photo shadow, handwriting */
+  --trip-board:#0d0d0d; --trip-board-cell:#171717; --trip-board-amber:#ffc23d; --trip-board-late:#ff6b57; --trip-board-text:#bdb5a6;
+  --trip-film:#fdfbf7; --trip-film-ink:#3b332b; --trip-film-dark:#efe8dc; --trip-tape:rgba(250,236,200,.72);
+  --trip-chalk:#203028; --trip-chalk-alps:#1d2d33; --trip-chalk-wood:#6e4c2f; --trip-chalk-ink:#f2efe6;
+  --trip-night:#0d0a08; --trip-night-glow:#2a2019; --trip-night-ink:#efe5d6; --trip-night-gold:#f3d9a8;
+  --trip-ink-white:#ffffff; --trip-scrim:rgba(10,18,24,.6);
+  --trip-shadow-photo:0 14px 34px rgba(30,20,10,.16), 0 2px 6px rgba(30,20,10,.08);
+  --trip-shadow-float:0 10px 30px rgba(0,0,0,.35);
+  --font-hand:'Caveat Variable', 'Bradley Hand', cursive;
+  --dur-chapter:.9s; --dur-develop:2.4s;
+}

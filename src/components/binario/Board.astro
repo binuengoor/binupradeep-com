@@ -1,0 +1,15 @@
+---
+// A split-flap departure board. Rows flip into place when the board scrolls into view.
+interface Props { title: string; rows: { t: string; to: string; note: string; late?: boolean }[] }
+const { title, rows } = Astro.props;
+---
+<section class="b-board b-full" aria-label={title}>
+  <div class="inner">
+    <h3>{title}</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Ora</th><th>Destinazione</th><th>Note</th></tr></thead>
+      <tbody>{rows.map((r) => <tr><td data-flap>{r.t}</td><td data-flap>{r.to}</td><td data-flap class:list={[r.late && 'late']}>{r.note}</td></tr>)}</tbody>
+    </table></div>
+    <slot />
+  </div>
+</section>
