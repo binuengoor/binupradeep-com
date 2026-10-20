@@ -76,6 +76,8 @@ The railway staff came to take orders of breakfast. We said 'no' because we had 
 
 19:32 - in GVK ONE mall.. Awesome awesome sight. Huge mall... Daringly beautiful place, hot and sexy chicks all around, we 3= excited!
 
+![GVK One mall lit up at night](images/2010/12/gvk-one-mall.webp)
+
 20:36 - saw a 4D film here. Awesome experience. Basically, it’s a 3D movie with extra effects like, ground shake, air surge, smell and water smoke.. Great.
 
 21:47 - had _KFC Juicy Chicken, Coleslaw, and Virgin Mojito_.. All except mojito was pure crap.
@@ -98,6 +100,8 @@ The railway staff came to take orders of breakfast. We said 'no' because we had 
 
 11:10 - reached Sanjeevaiyah Park. It is situated on the outskirts of Hussain Sagar lake. One can get good recreation plus an awesome view of the lake from this site.
 
+![The Sanjeevaiah Park board, Hyderabad Metropolitan Development Authority](images/2010/12/sanjeevaiah-park-board.webp)
+
 ![](images/2010/12/facebook_photo_download_5088560807178622337.jpg)
 ![](images/2010/12/facebook_photo_download_5088560807178622339.jpg)
 ![](images/2010/12/facebook_photo_download_5088560807178622351.jpg)
@@ -112,6 +116,8 @@ The railway staff came to take orders of breakfast. We said 'no' because we had 
 12:45 - the unexpected visit to the park turned out to be awesome. Took some fantastic photos. The rock garden was great.
 
 12:54 - ate paav bhaji and samosa frm a local chaat center
+
+![Eating paav bhaji and samosa from a plate at the chaat stall](images/2010/12/chaat-plate.webp)
 
 13:12 - paid a hefty price of rs 214 for this local food. Feels cheated
 
@@ -130,6 +136,8 @@ The railway staff came to take orders of breakfast. We said 'no' because we had 
 17:37 - waiting in Q for our chicken _McGrill at Mc Donalds_.
 
 17:49 - good burger it was..!
+
+![A McDonald's cup and a burger at the table](images/2010/12/mcdonalds.webp)
 
 17:55 - some people are trying out rock climbing. I too wanna climb.
 
