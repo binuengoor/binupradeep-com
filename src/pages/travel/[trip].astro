@@ -1,0 +1,127 @@
+---
+// Travelogue feature pages: /travel/<slug>/ for every trip in src/travel/trips.ts (Eurotrip 2024 has its own page).
+// Story: src/travel/<slug>/story.md. Photos: src/assets/travel/<slug>/. Styles: src/styles/travelogue.css (scoped under .tg).
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource-variable/caveat';
+import '../../styles/travelogue.css';
+import { Picture } from 'astro:assets';
+import Site from '../../layouts/Site.astro';
+import { trips, otherTrips, type Trip } from '../../travel/trips';
+
+export function getStaticPaths() {
+  return trips.map((trip) => ({ params: { trip: trip.slug }, props: { trip } }));
+}
+const { trip } = Astro.props as { trip: Trip };
+const stories = import.meta.glob('../../travel/*/story.md', { eager: true }) as Record<string, any>;
+const heroes = import.meta.glob('../../assets/travel/*/hero.webp', { eager: true, import: 'default' }) as Record<string, ImageMetadata>;
+const story = stories[`../../travel/${trip.slug}/story.md`];
+const hero = heroes[`../../assets/travel/${trip.slug}/hero.webp`];
+const Story = story.Content;
+const chapters = (story.getHeadings() as { depth: number; slug: string; text: string }[])
+  .filter((h) => h.depth === 2)
+  .map((h) => ({ slug: h.slug, label: h.text.replace(/[:.]+$/, '').replace(/^(.{34}).+$/, '$1…') }));
+const accent = { rust: ['var(--accent)', 'var(--accent-fg)'], teal: ['var(--lens)', 'var(--teal)'], orange: ['var(--orange)', 'var(--accent-fg)'] }[trip.accent];
+const more = otherTrips.filter((t) => t.slug !== trip.slug);
+---
+<Site title={`${trip.title} · ${trip.kicker.split(' · ')[0]}`} description={trip.description} path={`/travel/${trip.slug}/`} image={`/travel/${trip.slug}/og.jpg`} imageAlt={trip.heroAlt}>
+  <main class="tg" data-trip={trip.slug} style={`--tg-accent:${accent[0]};--tg-ink:${accent[1]}`}>
+    <header class="tg-hero">
+      <Picture src={hero} alt={trip.heroAlt} formats={['avif', 'webp']} widths={[800, 1600, 2400]} sizes="100vw" loading="eager" fetchpriority="high" />
+      {trip.heroCaption && <p class="tg-hero-cap">{trip.heroCaption}</p>}
+      <div class="tg-hero-copy">
+        <p class="tg-kicker">{trip.kicker}</p>
+        <h1>{trip.title}</h1>
+        <p class="tg-sub">{trip.sub}</p>
+        <dl class="tg-stats">
+          {trip.stats.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+        </dl>
+      </div>
+    </header>
+
+    {chapters.length > 1 && (
+      <nav class="tg-days" aria-label="Chapters">
+        <ol>{chapters.map((c) => <li><a href={`#${c.slug}`} data-for={c.slug}>{c.label}</a></li>)}</ol>
+      </nav>
+    )}
+
+    <article class="tg-story">
+      <Story />
+    </article>
+
+    <aside class="tg-more" aria-label="More travelogues">
+      <h2>More travelogues</h2>
+      <ul>
+        {more.map((t) => (
+          <li><a href={`/travel/${t.slug}/`}>
+            <img src={t.cover} alt="" width="1200" height="630" loading="lazy" />
+            <span class="tg-more-k">{t.kicker}</span>
+            <span class="tg-more-t">{t.title}</span>
+          </a></li>
+        ))}
+      </ul>
+      <p><a href="/blog/">← All writing</a></p>
+    </aside>
+
+    <div class="tg-lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+      <button class="close" type="button" aria-label="Close">×</button>
+      <button class="prev" type="button" aria-label="Previous photo">‹</button>
+      <img alt="" />
+      <button class="next" type="button" aria-label="Next photo">›</button>
+      <p class="cap"></p>
+    </div>
+  </main>
+</Site>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.tg')!;
+  const story = root.querySelector<HTMLElement>('.tg-story')!;
+
+  // Dateline lines ("Date: ...", "Weather: ...", "Location: ...") become small mono chips; diary times ("14:00 -") get a mono tag.
+  story.querySelectorAll<HTMLElement>('p, li').forEach((el) => {
+    const t = (el.textContent || '').trim();
+    if (/^(Date|Weather|Location):/.test(t) && el.children.length <= 1) el.classList.add('tg-dateline');
+    else if (el.tagName === 'P') {
+      const m = t.match(/^(\d{1,2}: ?\d{2}) ?[-–]/);
+      if (m && el.firstChild?.nodeType === Node.TEXT_NODE) {
+        const txt = el.firstChild as Text;
+        const idx = txt.data.indexOf(m[1]);
+        if (idx === 0) { const s = document.createElement('span'); s.className = 'tg-time'; s.textContent = m[1]; txt.data = txt.data.slice(m[1].length).replace(/^ ?[-–] ?/, ''); el.insertBefore(s, txt); }
+      }
+    }
+  });
+
+  // Current chapter in the sticky nav.
+  const links = [...root.querySelectorAll<HTMLAnchorElement>('.tg-days a')];
+  if (links.length) {
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => { const on = a.dataset.for === (e.target as HTMLElement).id; if (on) { a.setAttribute('aria-current', 'true'); a.scrollIntoView({ block: 'nearest', inline: 'center' }); } else a.removeAttribute('aria-current'); });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    story.querySelectorAll('h2[id]').forEach((h) => io.observe(h));
+  }
+
+  // Photo viewer.
+  const lb = root.querySelector<HTMLElement>('.tg-lb')!;
+  const lbImg = lb.querySelector('img')!, cap = lb.querySelector('.cap')!;
+  const photos = [...story.querySelectorAll<HTMLImageElement>('img')];
+  let at = 0;
+  const show = (i: number) => {
+    at = (i + photos.length) % photos.length;
+    const p = photos[at];
+    lbImg.src = p.currentSrc || p.src; lbImg.alt = p.alt;
+    const next = p.closest('p')?.nextElementSibling;
+    cap.textContent = next && next.querySelector(':scope > em') && !next.querySelector('img') ? next.textContent || '' : p.alt;
+  };
+  const close = () => { lb.hidden = true; document.body.style.overflow = ''; };
+  photos.forEach((p, i) => { p.style.cursor = 'zoom-in'; p.addEventListener('click', () => { show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }); });
+  lb.querySelector('.close')!.addEventListener('click', close);
+  lb.querySelector('.prev')!.addEventListener('click', () => show(at - 1));
+  lb.querySelector('.next')!.addEventListener('click', () => show(at + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  addEventListener('keydown', (e) => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(at - 1); else if (e.key === 'ArrowRight') show(at + 1);
+  });
+</script>
