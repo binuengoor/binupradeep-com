@@ -1,0 +1,21 @@
+---
+// A field guide to supplì: five sightings from Wikimedia Commons (credits below the grid and in the repo's media notes).
+import Pic from './Pic.astro';
+const specs = [
+  { n: 'ext-suppli-counter', c: 's1', tilt: -1.5, sizes: '(min-width: 1140px) 520px, 92vw', h: 'No. 1 · In the wild', t: 'Lined up at the pizza counter, right next to the slices.', alt: 'Rows of golden supplì beside pizza slices in a takeaway counter, under a sign reading Supplì Romani' },
+  { n: 'ext-suppli-tray', c: 's2', tilt: 2, sizes: '(min-width: 1140px) 260px, 46vw', h: 'No. 2 · The assortment', t: 'Round, long, pale, dark. Every shop has its own.', alt: 'A steel tray of assorted supplì, some round and dark, some long and pale' },
+  { n: 'ext-suppli-krista', c: 's3', tilt: 1, sizes: '(min-width: 1140px) 260px, 46vw', h: 'No. 3 · Al telefono', t: 'Break it open: the mozzarella stretches like an old phone cord.', alt: 'Two supplì on a white plate with salad leaves' },
+  { n: 'ext-suppli-platter', c: 's4', tilt: -2, sizes: '(min-width: 1140px) 260px, 46vw', h: 'No. 4 · The platter', t: 'For sharing. We did not share.', alt: 'Nine supplì on an oval steel platter' },
+  { n: 'ext-suppli-solo', c: 's5', tilt: 1.5, sizes: '(min-width: 1140px) 260px, 46vw', h: 'No. 5 · Solo', t: 'One supplì. Alone. Magnificent.', alt: 'A single supplì on a worn wooden board' },
+];
+---
+<section class="b-fieldguide b-wide" aria-label="A field guide to supplì: five ways it shows up">
+  <p class="head"><span class="mono">A field guide to</span><b>Supplì</b><span class="hand">five sightings, one obsession</span></p>
+  <div class="grid">
+    {specs.map((s) => (
+      <figure class:list={['b-spec', 'b-zoom', s.c]} style={`--tilt:${s.tilt}deg`}><Pic name={s.n} alt={s.alt} sizes={s.sizes} /><figcaption><b>{s.h}</b>{s.t}</figcaption></figure>
+    ))}
+    <p class="spec-note hand">Rome's parippuvada?<br />Not at all.<br />But I get it.</p>
+  </div>
+  <p class="credit">Photos via Wikimedia Commons: Saggittarius A (CC BY 4.0), Nicholas Gemini (CC BY-SA 4.0), Krista (CC BY 2.0), FrederikBianko (CC BY-SA 3.0, two).</p>
+</section>

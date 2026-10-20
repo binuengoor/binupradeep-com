@@ -49,7 +49,8 @@ export default defineConfig({
         MobileMenuFooter: './src/components/StarlightMobileMenuFooter.astro',
       },
       plugins: [
-        starlightLinksValidator({ errorOnRelativeLinks: false }),
+        // /travel/** are custom Astro pages (src/pages/travel/), which the validator cannot see.
+        starlightLinksValidator({ errorOnRelativeLinks: false, exclude: ['/travel/**'] }),
         starlightBlog({
           title: 'Writing',
           prefix: 'blog',

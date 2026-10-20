@@ -1,0 +1,11 @@
+---
+// Two or three photos side by side with one caption.
+import Pic from './Pic.astro';
+
+interface Props { items: { name: string; alt: string }[]; label?: string; caption?: string; land?: boolean }
+const { items, label, caption, land = false } = Astro.props;
+---
+<figure class:list={['b-pair', 'b-wide', 'b-zoom', land && 'is-land']} style={`--n:${items.length}`}>
+  {items.map((it) => <Pic name={it.name} alt={it.alt} sizes={`(min-width: 1140px) ${Math.round(1100 / items.length)}px, ${Math.round(94 / items.length)}vw`} />)}
+  {caption && <figcaption>{label && <span class="mono">{label}</span>}{caption}</figcaption>}
+</figure>

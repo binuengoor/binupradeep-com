@@ -1,0 +1,33 @@
+---
+// The opening photo (Lauterbrunnen): a tall crop on portrait screens, wide elsewhere. The route flips in like a station board.
+import { getImage } from 'astro:assets';
+import { photo } from './media';
+
+const wide = photo('hero-wide'), tall = photo('hero-tall');
+async function set(src: typeof wide, widths: number[], format: 'avif' | 'webp') {
+  const out = await Promise.all(widths.map((w) => getImage({ src, width: w, format })));
+  return out.map((o, i) => `${o.src} ${widths[i]}w`).join(', ');
+}
+const tallW = [800, 1500], wideW = [800, 1600, 2400];
+const [ta, tw, wa, ww] = await Promise.all([set(tall, tallW, 'avif'), set(tall, tallW, 'webp'), set(wide, wideW, 'avif'), set(wide, wideW, 'webp')]);
+const fallback = await getImage({ src: wide, width: 1600, format: 'webp' });
+const route = ['MILANO', 'ROMA', 'FIRENZE', 'INTERLAKEN', 'MILANO'];
+---
+<section class="b-hero" id="top">
+  <picture>
+    <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset={ta} sizes="100vw" />
+    <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset={tw} sizes="100vw" />
+    <source type="image/avif" srcset={wa} sizes="100vw" />
+    <source type="image/webp" srcset={ww} sizes="100vw" />
+    <img src={fallback.src} width={wide.width} height={wide.height} alt="Staubbach Falls dropping behind the village church in Lauterbrunnen, under a blue sky full of clouds" fetchpriority="high" />
+  </picture>
+  <p class="b-hero-cap">Lauterbrunnen. The dream.<span class="mono">Day 7 · 30 May · 13:23</span></p>
+  <div class="b-hero-copy">
+    <p class="b-kicker">Eurotrip 2024 · Italy &amp; Switzerland · 11 days</p>
+    <h1>Rome Looked Like a Movie and Felt Like Home</h1>
+    <p class="b-sub">Eleven days, two countries, one spreadsheet, and more supplì than is medically reasonable.</p>
+    <div class="b-flaps" role="img" aria-label="Route: Milano, Roma, Firenze, Interlaken, Milano">
+      {route.map((w, i) => <>{i > 0 && <span class="b-arrow" aria-hidden="true">→</span>}<span class="flapword" data-word={w} aria-hidden="true">{w.split('').map((c) => <span class="flap">{c}</span>)}</span></>)}
+    </div>
+  </div>
+</section>

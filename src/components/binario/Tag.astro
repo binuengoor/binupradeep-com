@@ -1,0 +1,10 @@
+---
+// The "If you go" box, as a luggage tag. Put a Markdown list inside.
+interface Props { label: string }
+const { label } = Astro.props;
+---
+<aside class="b-tag" aria-label={`If you go: ${label}`}>
+  <span class="hole" aria-hidden="true"></span>
+  <div class="side">If you go</div>
+  <div class="body"><slot /></div>
+</aside>

@@ -1,0 +1,16 @@
+---
+// A postcard with a stamp and a postmark. Sizes: small (floated), medium, wide.
+import Pic from './Pic.astro';
+import { timeOf } from './media';
+
+interface Props { name: string; alt: string; size?: 'small' | 'medium' | 'wide'; float?: 'l' | 'r'; stamp: [string, string]; postmark?: string; hand: string; time?: string }
+const { name, alt, size = 'wide', float, stamp, postmark, hand, time } = Astro.props;
+const sizes = size === 'wide' ? '(min-width: 1140px) 1070px, 94vw' : size === 'medium' ? '(min-width: 700px) 560px, 92vw' : '(min-width: 700px) 320px, 80vw';
+const lines = postmark?.split('|') ?? [];
+---
+<figure class:list={['b-postcard', 'b-zoom', `is-${size}`, size === 'wide' && 'b-wide', float && `b-float-${float}`]}>
+  <span class="b-pstamp" aria-hidden="true"><span><b>{stamp[0]}</b>{stamp[1]}</span></span>
+  {postmark && <span class="b-postmark" aria-hidden="true">{lines.map((l, i) => <>{i > 0 && <br />}{l}</>)}</span>}
+  <Pic name={name} alt={alt} sizes={sizes} />
+  <figcaption><span class="hand">{hand}</span><span class="mono">{time ?? timeOf(name)}</span></figcaption>
+</figure>

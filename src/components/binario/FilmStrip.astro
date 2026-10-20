@@ -1,0 +1,15 @@
+---
+// A strip of film frames that scrolls sideways.
+import Pic from './Pic.astro';
+import { timeOf } from './media';
+
+interface Props { label: string; items: { name: string; alt: string; cap: string }[] }
+const { label, items } = Astro.props;
+---
+<section class="b-filmstrip b-full" aria-label={label} tabindex="0">
+  <div class="frames">
+    {items.map((it) => (
+      <figure class="b-zoom"><Pic name={it.name} alt={it.alt} sizes="(min-width: 700px) 460px, 70vw" /><figcaption><span class="mono">{timeOf(it.name)}</span>{it.cap}</figcaption></figure>
+    ))}
+  </div>
+</section>

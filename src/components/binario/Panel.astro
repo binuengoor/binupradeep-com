@@ -1,0 +1,13 @@
+---
+// A photo and a clip side by side.
+import Pic from './Pic.astro';
+import Clip from './Clip.astro';
+
+interface Props { name: string; alt: string; clip: string; clipAlt: string; label: string; caption: string }
+const { name, alt, clip, clipAlt, label, caption } = Astro.props;
+---
+<figure class="b-panel b-wide">
+  <div class="b-zoom"><Pic name={name} alt={alt} sizes="(min-width: 1140px) 600px, 94vw" /></div>
+  <div><Clip name={clip} alt={clipAlt} /></div>
+  <figcaption><span class="mono">{label}</span>{caption}</figcaption>
+</figure>

@@ -1,0 +1,9 @@
+---
+// The day's food as a café chalkboard.
+interface Props { title: string; items: [string, string][]; alps?: boolean; float?: 'l' | 'r' }
+const { title, items, alps = false, float } = Astro.props;
+---
+<aside class:list={['b-menu', alps && 'is-alps', float && `b-float-${float}`]} aria-label={`What we ate: ${title}`}>
+  <h4>{title}</h4>
+  <ol>{items.map(([dish, note]) => <li>{dish}<small>{note}</small></li>)}</ol>
+</aside>

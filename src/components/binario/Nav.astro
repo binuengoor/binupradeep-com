@@ -1,0 +1,22 @@
+---
+// Route spine (wide screens) and the phone day tracker (a mini departure board).
+export const DAYS: [number, string, string][] = [
+  [1, 'Roma', 'DAY 01 ROMA'], [2, 'Vaticano', 'DAY 02 VATICANO'], [3, 'Roma antica', 'DAY 03 COLOSSEO'], [4, 'Firenze', 'DAY 04 FIRENZE'],
+  [5, 'In treno', 'DAY 05 IN TRENO'], [6, 'Schilthorn', 'DAY 06 SCHILTHORN'], [7, 'Lauterbrunnen', 'DAY 07 LAUTERBR'], [8, 'Brienz', 'DAY 08 BRIENZ'],
+  [9, 'Milano', 'DAY 09 MILANO'], [10, 'Home', 'DAY 10 HOME'],
+];
+---
+<nav class="b-spine" aria-label="Days of the trip">
+  <ol>{DAYS.map(([n, label]) => <li data-for={`d${n}`}><a href={`#day-${n}`} aria-label={`Day ${n}: ${label}`}>{n}</a><span class="lbl" aria-hidden="true">{label}</span></li>)}</ol>
+</nav>
+<nav class="b-daypill" aria-label="Jump to a day" data-days={JSON.stringify(Object.fromEntries(DAYS.map(([n, , b]) => [`d${n}`, b])))}>
+  <button type="button" aria-expanded="false" aria-controls="b-dplist"><span class="k">Binario</span><span class="flapword" id="b-dpday" aria-live="off">DAY 01 ROMA</span></button>
+  <ol id="b-dplist" hidden>{DAYS.map(([n, label]) => <li><a href={`#day-${n}`}>Day {n} · {label}</a></li>)}</ol>
+</nav>
+<div class="b-lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="b-lb-btn close" type="button" aria-label="Close">×</button>
+  <button class="b-lb-btn prev" type="button" aria-label="Previous photo">‹</button>
+  <img alt="" />
+  <button class="b-lb-btn next" type="button" aria-label="Next photo">›</button>
+  <p class="cap"></p>
+</div>

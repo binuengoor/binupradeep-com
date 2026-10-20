@@ -1,0 +1,13 @@
+---
+// Day 5: the plan against what actually happened.
+interface Props { rows: [string, string, string][] }
+const { rows } = Astro.props;
+---
+<div class="b-rebooked">
+  <span class="rit" aria-hidden="true">RITARDO</span>
+  <table>
+    <caption class="b-sr">The planned connections and what happened to each</caption>
+    <thead><tr><th scope="col">Leg</th><th scope="col">Plan</th><th scope="col">What happened</th></tr></thead>
+    <tbody>{rows.map(([leg, plan, act]) => <tr><td>{leg}</td><td><s>{plan}</s></td><td class="act">{act}</td></tr>)}</tbody>
+  </table>
+</div>

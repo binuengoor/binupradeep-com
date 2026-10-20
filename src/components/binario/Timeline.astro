@@ -1,0 +1,13 @@
+---
+// A walk as a dotted line of stops that scrolls sideways.
+import Pic from './Pic.astro';
+import { timeOf } from './media';
+
+interface Props { label: string; items: { name: string; alt: string; cap: string }[] }
+const { label, items } = Astro.props;
+---
+<section class="b-timeline b-full" aria-label={label} tabindex="0">
+  <ol>
+    {items.map((it) => <li class="b-zoom"><span class="t">{timeOf(it.name)}</span><Pic name={it.name} alt={it.alt} sizes="200px" /><span class="l">{it.cap}</span></li>)}
+  </ol>
+</section>

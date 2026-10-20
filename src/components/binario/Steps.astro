@@ -1,0 +1,6 @@
+---
+// A step-counter badge.
+interface Props { n: string; label: string }
+const { n, label } = Astro.props;
+---
+<p class="b-steps"><span class="n">{n}</span><span class="t">{label}</span></p>

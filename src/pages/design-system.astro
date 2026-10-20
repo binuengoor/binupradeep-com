@@ -23,6 +23,9 @@ const status = [
   { name: 'Success', token: '--ok' }, { name: 'Warning', token: '--warn' },
   { name: 'Danger', token: '--danger' }, { name: 'Info', token: '--info' },
 ];
+// Feature edition: Eurotrip 2024 "Binario" (/travel/eurotrip-2024/ only). Each chapter has paper, ink, accent and accent 2.
+const trip = ['rome', 'florence', 'alps', 'milan'].map((c) => ({ name: c[0].toUpperCase() + c.slice(1), tokens: ['paper', 'card', 'ink', 'muted', 'accent', 'accent2', 'line'].map((r) => `--trip-${c}-${r}`) }));
+const tripFixed = ['--trip-board', '--trip-board-amber', '--trip-board-late', '--trip-film', '--trip-chalk', '--trip-night', '--trip-night-gold', '--trip-tape'];
 const type = [
   { role: 'Display', token: '--text-4xl', font: 'display', sample: 'Minimalism wins', use: 'Hero H1 only' },
   { role: 'Title', token: '--text-3xl', font: 'display', sample: 'Page title', use: 'Docs and blog H1' },
@@ -161,7 +164,26 @@ const shadows = [['1', 'Small controls'], ['2', 'Cards on hover'], ['3', 'Hero i
     </section>
 
     <section>
-      <h2 class="sec"><i>07</i> Using it</h2>
+      <h2 class="sec"><i>07</i> Feature edition: Eurotrip 2024</h2>
+      <p class="sub">One page is allowed its own palette: the <a href="/travel/eurotrip-2024/">Eurotrip 2024 travelogue</a> ("Binario", a rail-journey theme). Its colours are still tokens (<code>--trip-*</code> in <code>tokens.css</code>, light and dark), its styles are scoped under <code>.binario</code> in <code>src/styles/binario.css</code>, and the shared header, footer and type stay the same. Caveat (handwriting) is used for short captions on that page only. The page fades between chapters as you scroll.</p>
+      {trip.map((c) => (
+        <div class="scale">
+          <div class="scale-head"><b>{c.name}</b><small>paper · card · ink · muted · accent · accent 2 · line</small></div>
+          <div class="scale-row">{c.tokens.map((tk) => (
+            <div class="step" title={tk}><span style={`background:var(${tk})`}></span><code>{tk.split('-').pop()}</code></div>
+          ))}</div>
+        </div>
+      ))}
+      <div class="scale">
+        <div class="scale-head"><b>Fixed</b><small>departure board, instant film, chalkboard, night (same in both themes)</small></div>
+        <div class="scale-row">{tripFixed.map((tk) => (
+          <div class="step" title={tk}><span style={`background:var(${tk})`}></span><code>{tk.replace('--trip-', '')}</code></div>
+        ))}</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec"><i>08</i> Using it</h2>
       <ul class="ds-rules">
         <li><b>Add a colour or size:</b> edit <code>src/styles/tokens.css</code> only. Pages and <code>theme.css</code> pick it up.</li>
         <li><b>New component:</b> build it from tokens (<code>var(--card-border)</code>, <code>var(--radius-lg)</code>, <code>var(--space-4)</code>), no raw px, hex or ms.</li>

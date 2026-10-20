@@ -1,0 +1,12 @@
+---
+// A full-width looping clip with a caption over it.
+import Clip from './Clip.astro';
+
+interface Props { clip: string; alt: string; chip: string; caption: string }
+const { clip, alt, chip, caption } = Astro.props;
+---
+<figure class="b-band b-full">
+  <Clip name={clip} alt={alt} />
+  <span class="b-chip">{chip}</span>
+  <figcaption>{caption}</figcaption>
+</figure>

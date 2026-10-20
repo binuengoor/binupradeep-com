@@ -1,0 +1,13 @@
+---
+// A responsive photo: AVIF + WebP at several widths, lazy by default. data-full feeds the photo viewer.
+import { Picture, getImage } from 'astro:assets';
+import { photo } from './media';
+
+interface Props { name: string; alt: string; sizes?: string; eager?: boolean }
+const { name, alt, sizes = '(min-width: 700px) 640px, 92vw', eager = false } = Astro.props;
+const src = photo(name);
+const widths = [480, 800, 1100, 1600, 2400].filter((w) => w < src.width).concat(src.width);
+const full = await getImage({ src, format: 'webp', width: Math.min(src.width, 1600) });
+---
+<Picture src={src} alt={alt} sizes={sizes} widths={widths} formats={['avif', 'webp']}
+  loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} decoding="async" data-full={full.src} />
