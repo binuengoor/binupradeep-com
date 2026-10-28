@@ -6,10 +6,10 @@ import '../styles/home.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
-interface Props { title: string; description: string; path?: string; jsonLd?: object }
-const { title, description, path = '/', jsonLd } = Astro.props;
+interface Props { title: string; description: string; path?: string; jsonLd?: object; image?: string; imageAlt?: string }
+const { title, description, path = '/', jsonLd, image = '/og.png', imageAlt = 'Binu Pradeep — Project Manager, builder, homelabber' } = Astro.props;
 const url = `https://binupradeep.com${path}`;
-const ogImage = 'https://binupradeep.com/og.png';
+const ogImage = `https://binupradeep.com${image}`;
 ---
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,7 @@ const ogImage = 'https://binupradeep.com/og.png';
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Binu Pradeep — Project Manager, builder, homelabber" />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
     <link rel="canonical" href={url} />
